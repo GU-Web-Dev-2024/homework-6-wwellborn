@@ -50,19 +50,26 @@
             var $buttonStart = $("#button-start");
             var $buttonStop = $("#button-stop");
             var $buttonReset = $("#button-reset");
-            
+            var $timer = $("#timer");
+
             var interval;
-            
+            var backgroundInterval;
 
             $("#button-start, #button-stop, #button-reset").addClass("button-style");
 
-            
+            function animateBackground() {
+                backgroundInterval = setInterval(function() {
+                $timer.animate({ opacity: 0.8 }, 500).animate({ opacity: 1.0 }, 500);
+                }, 1000);
+            }
             
             function buttonStartClicked() {
                 clearInterval(interval);
+                clearInterval(backgroundInterval);
                 interval = setInterval(startTimer, 10);
 
                 $("#timer").attr("style", "background-color:green");
+                animateBackground();
             }
             $buttonStart.on("click", buttonStartClicked);
 
@@ -70,7 +77,10 @@
             
             function buttonStopClicked() {
                 clearInterval(interval);
-                $("#timer").attr("style", "background-color:red");
+                clearInterval(backgroundInterval);
+                $timer.attr("style", "background-color:red");
+                $timer.stop(true, true);
+                $timer.css({opacity:1.0});
             }
             $buttonStop.on("click", buttonStopClicked);
 
@@ -79,11 +89,15 @@
             
             function buttonResetClicked() {
                 clearInterval(interval);
+                clearInterval(backgroundInterval);
+                $timer.attr("style", "background-color:gray");
+                $timer.stop(true, true);
+                $timer.css({opacity:1.0});
                 tens = "00";
                 seconds = "00";
                 $appendTens.html(tens);
                 $appendSeconds.html(seconds);
-                $("#timer").attr("style", "background-color:gray");
+                
             }
             $buttonReset.on("click", buttonResetClicked);
 
