@@ -4,11 +4,18 @@
     -->
 <!DOCTYPE html>
 <html lang="en">
-
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HW6 - JQuery</title>
+    <style>
+        .timer-background {
+            background-color: blue;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        </style>
     <script
         src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
@@ -16,6 +23,9 @@
     <script>
             // Wait until the document's DOM is ready
              $(document).ready(function() {
+
+                
+            $("#timer").addClass("timer-background");
             var seconds = "00";
             var tens = "00";
             
@@ -94,7 +104,7 @@
     <div class="wrapper">
         <h1>Stopwatch</h1>
         <h2>Vanilla JavaScript Stopwatch</h2>
-        <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+        <p id = "timer"><span id="seconds">00</span>:<span id="tens">00</span></p>
         <button id="button-start">Start</button>
         <button id="button-stop">Stop</button>
         <button id="button-reset">Reset</button>
