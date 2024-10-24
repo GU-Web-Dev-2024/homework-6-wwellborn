@@ -11,7 +11,7 @@
     <title>HW6 - JQuery</title>
     <style>
         .timer-background {
-            background-color: blue;
+            background-color: grey;
             padding: 10px;
             border-radius: 5px;
         }
@@ -48,6 +48,8 @@
             function buttonStartClicked() {
                 clearInterval(interval);
                 interval = setInterval(startTimer, 10);
+
+                $("#timer").attr("style", "background-color:green");
             }
             $buttonStart.on("click", buttonStartClicked);
 
@@ -55,6 +57,7 @@
             
             function buttonStopClicked() {
                 clearInterval(interval);
+                $("#timer").attr("style", "background-color:red");
             }
             $buttonStop.on("click", buttonStopClicked);
 
@@ -67,6 +70,7 @@
                 seconds = "00";
                 $appendTens.html(tens);
                 $appendSeconds.html(seconds);
+                $("#timer").attr("style", "background-color:gray");
             }
             $buttonReset.on("click", buttonResetClicked);
 
