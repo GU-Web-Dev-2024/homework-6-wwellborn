@@ -15,6 +15,15 @@
             padding: 10px;
             border-radius: 5px;
         }
+        .button-style{
+                background-color: lightblue;
+                border: solid black;
+                padding: 10px 20px;
+                font-size: 16px;
+                border-radius: 5px;
+                cursor: pointer;
+                margin: 5px;
+            }
         </style>
     <script
         src="https://code.jquery.com/jquery-3.7.1.min.js"
@@ -43,7 +52,11 @@
             var $buttonReset = $("#button-reset");
             
             var interval;
+            
 
+            $("#button-start, #button-stop, #button-reset").addClass("button-style");
+
+            
             
             function buttonStartClicked() {
                 clearInterval(interval);
