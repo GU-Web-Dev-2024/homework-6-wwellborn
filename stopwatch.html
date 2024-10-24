@@ -55,6 +55,10 @@
             var interval;
             var backgroundInterval;
 
+            $(".wrapper").css("border", "5px solid purple");
+            $("*").css("font-family", "Fantasy, Papyrus");
+            $(".wrapper").css("background-color", "orange");
+
             $("#button-start, #button-stop, #button-reset").addClass("button-style");
 
             function animateBackground() {
@@ -134,7 +138,7 @@
 <body>
     <div class="wrapper">
         <h1>Stopwatch</h1>
-        <h2>Vanilla JavaScript Stopwatch</h2>
+        <h2>Spooky JQuery Stopwatch</h2>
         <p id = "timer"><span id="seconds">00</span>:<span id="tens">00</span></p>
         <button id="button-start">Start</button>
         <button id="button-stop">Stop</button>
