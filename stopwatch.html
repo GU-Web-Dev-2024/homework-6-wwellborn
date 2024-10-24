@@ -9,59 +9,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HW6 - JQuery</title>
+    <script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
     <script>
-        window.onload = function () {
+            // Wait until the document's DOM is ready
+             $(document).ready(function() {
             var seconds = "00";
             var tens = "00";
-            var appendTens = document.getElementById("tens")
+            
+           /* var appendTens = document.getElementById("tens")
             var appendSeconds = document.getElementById("seconds")
             var buttonStart = document.getElementById('button-start');
             var buttonStop = document.getElementById('button-stop');
-            var buttonReset = document.getElementById('button-reset');
+            var buttonReset = document.getElementById('button-reset'); */
+
+            //JS DOM selection to JQuery
+            var $appendTens = $("#tens");
+            var $appendSeconds = $("#seconds");
+            var $buttonStart = $("#button-start");
+            var $buttonStop = $("#button-stop");
+            var $buttonReset = $("#button-reset");
+            
             var interval;
 
-            buttonStart.onclick = function () {
+            
+            function buttonStartClicked() {
                 clearInterval(interval);
                 interval = setInterval(startTimer, 10);
             }
+            $buttonStart.on("click", buttonStartClicked);
 
-            buttonStop.onclick = function () {
+             
+            
+            function buttonStopClicked() {
                 clearInterval(interval);
             }
+            $buttonStop.on("click", buttonStopClicked);
 
-            buttonReset.onclick = function () {
+
+            
+            
+            function buttonResetClicked() {
                 clearInterval(interval);
                 tens = "00";
                 seconds = "00";
-                appendTens.innerHTML = tens;
-                appendSeconds.innerHTML = seconds;
+                $appendTens.html(tens);
+                $appendSeconds.html(seconds);
             }
+            $buttonReset.on("click", buttonResetClicked);
+
 
             function startTimer() {
                 tens++;
 
                 if (tens < 9) {
-                    appendTens.innerHTML = "0" + tens;
+                    $appendTens.html("0" + tens);
                 }
 
                 if (tens > 9) {
-                    appendTens.innerHTML = tens;
+                    $appendTens.html(tens);
 
                 }
 
                 if (tens > 99) {
                     console.log("seconds");
                     seconds++;
-                    appendSeconds.innerHTML = "0" + seconds;
+                    $appendSeconds.html("0" + seconds);
                     tens = 0;
-                    appendTens.innerHTML = "0" + 0;
+                    $appendTens.html("00");
                 }
 
                 if (seconds > 9) {
-                    appendSeconds.innerHTML = seconds;
+                    $appendSeconds.html(seconds);
                 }
             }
-        }
+        });
+    
     </script>
 </head>
 
